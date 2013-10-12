@@ -79,6 +79,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="RandomAgent.h" />
     <ClInclude Include="ReflexAgent.h" />
     <ClInclude Include="Room.h" />
     <ClInclude Include="stdafx.h" />
@@ -86,6 +87,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CS531-1.cpp" />
+    <ClCompile Include="RandomAgent.cpp" />
     <ClCompile Include="ReflexAgent.cpp" />
     <ClCompile Include="Room.cpp" />
     <ClCompile Include="stdafx.cpp" />

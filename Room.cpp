@@ -5,7 +5,6 @@
 Room::Room(float p_dirty) :
 	x(x_home), y(y_home), dir(north)
 {
-	srand(time(0));
 	for(int i = 0; i < m_size; i++) {
 		for(int j = 0; j < n_size; j++) {
 			if((rand() % 100)/100.0f <= p_dirty) {

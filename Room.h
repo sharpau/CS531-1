@@ -30,7 +30,12 @@ public:
 	// actions
 	void clean(void) { tiles[x][y] = false; }
 	void turn_right(void) {	dir = (direction)((dir + 1) % 4); }
-	void turn_left(void) { dir = (direction)((dir - 1) % 4); }
+	void turn_left(void) { 
+		dir = (direction)(dir - 1);
+		if(dir < 0) {
+			dir = (direction)(dir + 4);
+		}
+	}
 	void forward(void);
 
 	int get_clean_squares(void);

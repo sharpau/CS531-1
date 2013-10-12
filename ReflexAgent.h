@@ -4,6 +4,7 @@
 
 class ReflexAgent
 {
+protected:
 	// for tracking efficiency
 	int actions;
 
