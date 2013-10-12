@@ -11,7 +11,6 @@
 #include <tchar.h>
 #include <cstdlib>
 #include <time.h>
-
-
+#include <vector>
 
 // TODO: reference additional headers your program requires here

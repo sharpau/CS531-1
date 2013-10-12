@@ -2,33 +2,21 @@
 //
 
 #include "stdafx.h"
-
-#define n_size 10
-#define m_size 10
-#define p_dirty 1.0f
-
-// environment. true = dirty, clean = false
-bool room[m_size][n_size];
-
-
-void initialize_room(void) {
-	for(int i = 0; i < m_size; i++) {
-		for(int j = 0; j < n_size; j++) {
-			if((rand() % 100)/100.0f >= p_dirty) {
-				room[i][j] = true;
-			}
-			else {
-				room[i][j] = false;
-			}
-		}
-	}
-}
+#include "ReflexAgent.h"
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	srand(time(0));
-	initialize_room();
+	Room room(1.0f);
+	ReflexAgent reflex(room);
 
+	// list of: #actions, #clean
+	std::vector<std::pair<int, int>> progress;
+
+	while(reflex.act()) {
+		// track progress
+		auto pair = std::make_pair(reflex.get_actions(), room.get_clean_squares());
+		progress.push_back(pair);
+	}
 
 
 	return 0;
