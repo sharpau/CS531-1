@@ -4,6 +4,7 @@
 #include "stdafx.h"
 #include "ReflexAgent.h"
 #include "RandomAgent.h"
+#include "ModelAgent.h"
 
 int _tmain(int argc, _TCHAR* argv[])
 {
@@ -13,32 +14,39 @@ int _tmain(int argc, _TCHAR* argv[])
 	ReflexAgent reflex(room);
 
 	// list of: #actions, #clean
-	std::vector<std::pair<int, int>> progress;
+	std::vector<int> progress;
 
 	while(reflex.act()) {
 		// track progress
-		auto pair = std::make_pair(reflex.get_actions(), room.get_clean_squares());
-		progress.push_back(pair);
+		progress.push_back(room.get_clean_squares());
 	}
 
 	// get a sampling of RandomAgent results
-	std::vector<std::pair<int, int>> samples[50];
+	std::vector<int> samples[50];
 	for(int i = 0; i < 50; i++) {
 		room = Room(1.0f);
 		RandomAgent random(room);
 
 		// list of: #actions, #clean
-		std::vector<std::pair<int, int>> rand_progress;
+		std::vector<int> rand_progress;
 
 		while(random.act()) {
 			// track progress
-			auto pair = std::make_pair(random.get_actions(), room.get_clean_squares());
-			rand_progress.push_back(pair);
+			rand_progress.push_back(room.get_clean_squares());
 		}
 		samples[i] = rand_progress;
 	}
 
+	room = Room(1.0f);
+	ModelAgent model(room);
 
+	// list of: #actions, #clean
+	std::vector<int> model_progress;
+
+	while(model.act()) {
+		// track progress
+		model_progress.push_back(room.get_clean_squares());
+	}
 
 	return 0;
 }
