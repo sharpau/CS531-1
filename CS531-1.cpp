@@ -36,6 +36,11 @@ int _tmain(int argc, _TCHAR* argv[])
 		}
 		samples[i] = rand_progress;
 	}
+	double avg_clean = 0;
+	for(auto vec : samples) {
+		avg_clean += vec[vec.size() - 1];
+	}
+	avg_clean /= 50;
 
 	room = Room(1.0f);
 	ModelAgent model(room);
