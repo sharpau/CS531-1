@@ -12,5 +12,6 @@
 #include <cstdlib>
 #include <time.h>
 #include <vector>
+#include <fstream>
 
 // TODO: reference additional headers your program requires here
