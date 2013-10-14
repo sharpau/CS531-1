@@ -20,9 +20,18 @@ bool RandomAgent::act(void)
 		// clean
 		environment.clean();
 	}
-	else if(environment.is_home() && environment.is_wall() && rand() % 100 == 0) {
-		// turn off
-		result = false;
+	else if(environment.is_home() && environment.is_wall()) {
+		int val = rand() % 100;
+		if(val == 0) {
+			// turn off
+			result = false;
+		}
+		else if(val < 50) {
+			environment.turn_left();
+		}
+		else {
+			environment.turn_right();
+		}
 	}
 	else if(environment.is_wall()) {
 		// turn right or left
@@ -35,11 +44,11 @@ bool RandomAgent::act(void)
 	}
 	else {
 		// do something random!
-		int val = rand() % 3;
-		if(val == 0) {
+		int val = rand() % 5;
+		if(val < 3) {
 			environment.forward();
 		}
-		else if(val == 1) {
+		else if(val == 4) {
 			environment.turn_left();
 		}
 		else {
